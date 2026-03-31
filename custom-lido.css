@@ -1433,6 +1433,234 @@ details > p {
 
 
 /* ============================================================
+   VIDEO SECTION
+   ============================================================ */
+.video-section { position: relative !important; overflow: hidden !important; }
+.video-section__media,
+.video-section .deferred-media {
+  border-radius: var(--radius-lg) !important;
+  overflow: hidden !important;
+}
+.video-section__poster {
+  transition: opacity 0.4s var(--ease) !important;
+}
+.deferred-media__poster-button {
+  background: rgba(255,255,255,0.92) !important;
+  border-radius: 50% !important;
+  width: 64px !important;
+  height: 64px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: var(--trans) !important;
+  box-shadow: var(--shadow-md) !important;
+  border: none !important;
+}
+.deferred-media__poster-button:hover {
+  background: var(--c-accent) !important;
+  transform: scale(1.08) !important;
+  box-shadow: 0 8px 32px rgba(245,166,35,0.4) !important;
+}
+.deferred-media__poster-button svg { color: var(--c-black) !important; }
+.deferred-media__poster-button:hover svg { color: var(--c-white) !important; }
+
+
+/* ============================================================
+   CONTACT FORM
+   ============================================================ */
+.contact__fields {
+  display: grid !important;
+  gap: 16px !important;
+}
+.contact__button.button {
+  background: var(--c-black) !important;
+  color: var(--c-white) !important;
+  border: 2px solid var(--c-black) !important;
+  border-radius: var(--radius-pill) !important;
+  font-family: var(--font-ui) !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.09em !important;
+  text-transform: uppercase !important;
+  padding: 14px 40px !important;
+  transition: var(--trans) !important;
+}
+.contact__button.button:hover {
+  background: var(--c-dark) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+.contact .form-status {
+  font-family: var(--font-ui) !important;
+  font-size: 14px !important;
+  padding: 14px 18px !important;
+  border-radius: var(--radius-sm) !important;
+}
+.contact .form-status--success { background: #e8f7ee !important; color: var(--c-green) !important; }
+.contact .form-status--error { background: #fde8e9 !important; color: var(--c-red) !important; }
+
+
+/* ============================================================
+   CUSTOMER ACCOUNT PAGES
+   ============================================================ */
+.customer h1,
+.customer h2 {
+  font-family: var(--font-display) !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.01em !important;
+}
+.customer h1 { font-size: clamp(28px, 4vw, 44px) !important; }
+.customer h2 { font-size: clamp(20px, 2.5vw, 28px) !important; }
+
+.customer .button,
+.customer button[type="submit"] {
+  background: var(--c-black) !important;
+  color: var(--c-white) !important;
+  border: 2px solid var(--c-black) !important;
+  border-radius: var(--radius-pill) !important;
+  font-family: var(--font-ui) !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.09em !important;
+  text-transform: uppercase !important;
+  padding: 13px 32px !important;
+  transition: var(--trans) !important;
+}
+.customer .button:hover { background: var(--c-dark) !important; border-color: var(--c-dark) !important; }
+
+/* Order history table */
+.customer .orders-table,
+.order-summary table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  font-family: var(--font-ui) !important;
+}
+.customer .orders-table th,
+.order-summary th {
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.10em !important;
+  text-transform: uppercase !important;
+  color: var(--c-gray-300) !important;
+  padding: 10px 16px !important;
+  border-bottom: 1px solid var(--c-gray-200) !important;
+  text-align: left !important;
+}
+.customer .orders-table td,
+.order-summary td {
+  font-size: 14px !important;
+  color: var(--c-gray-700) !important;
+  padding: 14px 16px !important;
+  border-bottom: 1px solid var(--c-gray-100) !important;
+}
+.customer .orders-table a { color: var(--c-accent) !important; font-weight: 600 !important; }
+.customer .orders-table a:hover { color: var(--c-accent-dk) !important; }
+
+/* Login/Register form */
+.customer .login-form,
+.customer .register-form {
+  max-width: 440px !important;
+  margin: 0 auto !important;
+}
+.customer .link { color: var(--c-accent) !important; font-weight: 600 !important; }
+.customer .link:hover { color: var(--c-accent-dk) !important; }
+
+
+/* ============================================================
+   COLOR SWATCHES (variant picker)
+   ============================================================ */
+.swatch {
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 50% !important;
+  border: 2px solid transparent !important;
+  cursor: pointer !important;
+  transition: var(--trans) !important;
+  position: relative !important;
+}
+.swatch--square {
+  border-radius: var(--radius-sm) !important;
+  width: 32px !important;
+  height: 32px !important;
+}
+.swatch:hover {
+  transform: scale(1.12) !important;
+  box-shadow: 0 0 0 2px var(--c-white), 0 0 0 4px var(--c-gray-300) !important;
+}
+.swatch--unavailable {
+  opacity: 0.35 !important;
+  cursor: not-allowed !important;
+}
+.swatch--unavailable::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(135deg, transparent 45%, rgba(255,255,255,0.9) 45%, rgba(255,255,255,0.9) 55%, transparent 55%) !important;
+  border-radius: inherit !important;
+}
+
+
+/* ============================================================
+   404 PAGE
+   ============================================================ */
+.template-404 .error-message,
+.template-404 h1 {
+  font-family: var(--font-display) !important;
+  font-size: clamp(48px, 8vw, 120px) !important;
+  font-weight: 300 !important;
+  letter-spacing: -0.04em !important;
+  color: var(--c-black) !important;
+  line-height: 1 !important;
+}
+.template-404 p {
+  font-family: var(--font-ui) !important;
+  font-size: 18px !important;
+  color: var(--c-gray-500) !important;
+  margin: 16px 0 32px !important;
+}
+
+
+/* ============================================================
+   SCROLL ANIMATIONS — subtle entrance
+   ============================================================ */
+.scroll-trigger.animate--slide-in {
+  animation-timing-function: var(--ease) !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-trigger { animation: none !important; opacity: 1 !important; }
+}
+
+
+/* ============================================================
+   SECTION SPACING — standardize vertical rhythm
+   ============================================================ */
+.featured-collection.section,
+.collection-list.section,
+.rich-text.section,
+.multicolumn.section,
+.newsletter.section,
+.image-with-text.section,
+.video.section,
+.contact.section {
+  padding-top: 80px !important;
+  padding-bottom: 80px !important;
+}
+@media (max-width: 749px) {
+  .featured-collection.section,
+  .collection-list.section,
+  .rich-text.section,
+  .multicolumn.section,
+  .newsletter.section,
+  .image-with-text.section,
+  .video.section,
+  .contact.section {
+    padding-top: 52px !important;
+    padding-bottom: 52px !important;
+  }
+}
+
+
+/* ============================================================
    MEDIA QUERIES
    ============================================================ */
 @media (max-width: 989px) {
