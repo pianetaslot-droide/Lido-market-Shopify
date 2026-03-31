@@ -82,6 +82,7 @@ a { text-decoration: none; color: inherit; transition: color 0.2s ease; }
 .announcement-bar {
   background: var(--c-black) !important;
   padding: 10px 0 !important;
+  overflow: hidden !important;
 }
 .announcement-bar__message {
   font-family: var(--font-ui) !important;
@@ -90,6 +91,14 @@ a { text-decoration: none; color: inherit; transition: color 0.2s ease; }
   letter-spacing: 0.1em !important;
   text-transform: uppercase !important;
   color: rgba(255,255,255,0.75) !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+/* Hide overflow slides in announcement slider */
+.announcement-bar__slider,
+.slider.slider--everywhere {
+  overflow: hidden !important;
 }
 
 
