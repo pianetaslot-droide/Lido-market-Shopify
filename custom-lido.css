@@ -132,14 +132,14 @@ img { display: block; max-width: 100%; }
 .header__active-menu-item,
 .header__menu-item.list-menu__item {
   font-family: var(--font-ui) !important;
-  font-size: 11px !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.03em !important;
-  text-transform: uppercase !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.01em !important;
+  text-transform: none !important;
   color: var(--c-gray-700) !important;
   transition: color 0.2s !important;
-  padding-left: 10px !important;
-  padding-right: 10px !important;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
 }
 .header__menu-item:hover { color: var(--c-accent) !important; }
 .header__active-menu-item { color: var(--c-accent) !important; }
