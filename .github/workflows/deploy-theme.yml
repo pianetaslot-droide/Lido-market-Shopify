@@ -1,0 +1,47 @@
+name: Deploy Theme to Shopify
+
+on:
+  push:
+    branches:
+      - main
+      - claude/**
+    paths:
+      - 'custom-lido.css'
+      - 'theme/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Push CSS to Shopify
+        env:
+          SHOPIFY_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          SHOPIFY_STORE: qvznxd-p0.myshopify.com
+          THEME_ID: "185887064444"
+        run: |
+          CSS=$(cat custom-lido.css)
+          PAYLOAD=$(python3 -c "
+          import json, sys
+          css = open('custom-lido.css').read()
+          print(json.dumps({'asset': {'key': 'assets/custom-lido.css', 'value': css}}))
+          ")
+
+          RESPONSE=$(curl -s -w "\n%{http_code}" -X PUT \
+            "https://$SHOPIFY_STORE/admin/api/2024-01/themes/$THEME_ID/assets.json" \
+            -H "X-Shopify-Access-Token: $SHOPIFY_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d "$PAYLOAD")
+
+          HTTP_CODE=$(echo "$RESPONSE" | tail -1)
+          BODY=$(echo "$RESPONSE" | head -1)
+
+          if [ "$HTTP_CODE" = "200" ]; then
+            KEY=$(echo "$BODY" | python3 -c "import json,sys; print(json.load(sys.stdin)['asset']['key'])")
+            SIZE=$(echo "$BODY" | python3 -c "import json,sys; print(json.load(sys.stdin)['asset']['size'])")
+            echo "✅ Deployed: $KEY ($SIZE bytes)"
+          else
+            echo "❌ Failed (HTTP $HTTP_CODE): $BODY"
+            exit 1
+          fi
