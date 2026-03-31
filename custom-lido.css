@@ -157,34 +157,43 @@ a { text-decoration: none; color: inherit; transition: color 0.2s ease; }
 
 /* ============================================================
    MEGA MENU / DROPDOWN
+   — Only style the outer wrapper, never individual items
    ============================================================ */
-.mega-menu {
-  border: none !important;
-  border-radius: var(--radius-md) !important;
-  box-shadow: var(--shadow-lg) !important;
-  background: var(--c-white) !important;
-  padding: 20px 24px !important;
-}
 
+/* Outer dropdown panel */
 .header__submenu {
   border: none !important;
-  border-radius: var(--radius-sm) !important;
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm) !important;
   box-shadow: var(--shadow-md) !important;
   background: var(--c-white) !important;
-  padding: 8px 0 !important;
 }
 
+/* Reset any card-like appearance on mega menu inner items */
+.mega-menu,
+.mega-menu__inner,
+.mega-menu__content,
+.mega-menu__content-item,
+.mega-menu__columns-with-types,
+.header__menu-item--has-children .header__submenu > * {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+/* Nav links inside menus */
 .mega-menu__link,
 .header__submenu-item {
   font-family: var(--font-ui) !important;
   font-size: 13px !important;
   font-weight: 500 !important;
   color: var(--c-gray-700) !important;
-  padding: 7px 16px !important;
-  transition: color 0.2s ease, background 0.2s ease !important;
+  padding: 6px 14px !important;
+  transition: color 0.2s ease !important;
   display: block !important;
-  border-radius: var(--radius-sm) !important;
-  white-space: nowrap !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
 }
 .mega-menu__link:hover,
 .header__submenu-item:hover {
@@ -200,7 +209,8 @@ a { text-decoration: none; color: inherit; transition: color 0.2s ease; }
   text-transform: uppercase !important;
   color: var(--c-gray-300) !important;
   margin-bottom: 6px !important;
-  padding: 0 16px !important;
+  padding: 0 14px !important;
+  background: transparent !important;
 }
 
 
