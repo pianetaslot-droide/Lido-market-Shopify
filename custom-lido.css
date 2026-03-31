@@ -158,14 +158,20 @@ a { text-decoration: none; color: inherit; transition: color 0.2s ease; }
 /* ============================================================
    MEGA MENU / DROPDOWN
    ============================================================ */
-.mega-menu,
-.header__submenu {
+.mega-menu {
   border: none !important;
   border-radius: var(--radius-md) !important;
   box-shadow: var(--shadow-lg) !important;
   background: var(--c-white) !important;
-  padding: 28px 32px !important;
-  top: calc(100% + 10px) !important;
+  padding: 20px 24px !important;
+}
+
+.header__submenu {
+  border: none !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: var(--shadow-md) !important;
+  background: var(--c-white) !important;
+  padding: 8px 0 !important;
 }
 
 .mega-menu__link,
@@ -174,11 +180,17 @@ a { text-decoration: none; color: inherit; transition: color 0.2s ease; }
   font-size: 13px !important;
   font-weight: 500 !important;
   color: var(--c-gray-700) !important;
-  padding: 6px 0 !important;
-  transition: color 0.2s ease !important;
+  padding: 7px 16px !important;
+  transition: color 0.2s ease, background 0.2s ease !important;
   display: block !important;
+  border-radius: var(--radius-sm) !important;
+  white-space: nowrap !important;
 }
-.mega-menu__link:hover { color: var(--c-accent) !important; }
+.mega-menu__link:hover,
+.header__submenu-item:hover {
+  color: var(--c-accent) !important;
+  background: var(--c-gray-100) !important;
+}
 
 .mega-menu__heading {
   font-family: var(--font-ui) !important;
@@ -187,7 +199,8 @@ a { text-decoration: none; color: inherit; transition: color 0.2s ease; }
   letter-spacing: 0.12em !important;
   text-transform: uppercase !important;
   color: var(--c-gray-300) !important;
-  margin-bottom: 10px !important;
+  margin-bottom: 6px !important;
+  padding: 0 16px !important;
 }
 
 
@@ -334,6 +347,8 @@ button[type="submit"] {
 
 /* ============================================================
    PRODUCT / COLLECTION CARDS
+   — Scoped strictly to product/collection contexts,
+     NOT nav menus or other .card uses
    ============================================================ */
 .card-wrapper {
   border-radius: var(--radius-md) !important;
@@ -345,7 +360,10 @@ button[type="submit"] {
   box-shadow: var(--shadow-lg) !important;
 }
 
-.card {
+/* Only target cards inside product grids / collection lists */
+.product-grid .card,
+.collection-list .card,
+.card-wrapper > .card {
   border: none !important;
   background: var(--c-gray-100) !important;
   border-radius: var(--radius-md) !important;
@@ -354,14 +372,14 @@ button[type="submit"] {
 }
 
 /* Image area */
-.card__media,
-.card__image-wrapper {
+.card-wrapper .card__media,
+.card-wrapper .card__image-wrapper {
   background: var(--c-gray-100) !important;
   overflow: hidden !important;
   aspect-ratio: 1 / 1 !important;
 }
-.card__media img,
-.card__image-wrapper img {
+.card-wrapper .card__media img,
+.card-wrapper .card__image-wrapper img {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
@@ -373,12 +391,12 @@ button[type="submit"] {
 }
 
 /* Card info */
-.card__information {
+.card-wrapper .card__information {
   padding: 16px 18px 20px !important;
   background: var(--c-white) !important;
 }
 
-.card__heading {
+.card-wrapper .card__heading {
   font-family: var(--font-ui) !important;
   font-size: 13.5px !important;
   font-weight: 600 !important;
@@ -387,7 +405,7 @@ button[type="submit"] {
   line-height: 1.4 !important;
   margin-bottom: 5px !important;
 }
-.card__heading a { color: inherit !important; }
+.card-wrapper .card__heading a { color: inherit !important; }
 
 .card-information__subtitle,
 .card__vendor {
@@ -399,7 +417,7 @@ button[type="submit"] {
   color: var(--c-gray-300) !important;
 }
 
-/* Price — hidden / €0 style */
+/* Price */
 .price {
   font-family: var(--font-ui) !important;
   font-size: 13px !important;
@@ -407,8 +425,6 @@ button[type="submit"] {
   color: var(--c-gray-500) !important;
 }
 .price__current { color: var(--c-gray-500) !important; }
-/* Hide €0.00 if desired (comment out if you want to show) */
-/* .price:has(.price-item--regular:empty) { display: none !important; } */
 
 
 /* ============================================================
